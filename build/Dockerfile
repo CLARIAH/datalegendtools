@@ -30,7 +30,7 @@ RUN mkdir shared && chown datalegend:users ./shared
 RUN mkdir ~/.cow
 RUN curl -L "https://codeload.github.com/CLARIAH/COW/tar.gz/refs/tags/$VERSION_COW" | tar xz -C ~/.cow --strip-components=1
 WORKDIR /home/datalegend/.cow
-RUN pip3 install . && pip cache remove *
+RUN pip3 install . && pip cache purge
 
 WORKDIR /home/datalegend
 
