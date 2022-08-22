@@ -1,0 +1,31 @@
+ ________  ________  _________  ________  ___       _______   ________  _______   ________   ________     
+|\   ___ \|\   __  \|\___   ___\\   __  \|\  \     |\  ___ \ |\   ____\|\  ___ \ |\   ___  \|\   ___ \    
+\ \  \_|\ \ \  \|\  \|___ \  \_\ \  \|\  \ \  \    \ \   __/|\ \  \___|\ \   __/|\ \  \\ \  \ \  \_|\ \   
+ \ \  \ \\ \ \   __  \   \ \  \ \ \   __  \ \  \    \ \  \_|/_\ \  \  __\ \  \_|/_\ \  \\ \  \ \  \ \\ \  
+  \ \  \_\\ \ \  \ \  \   \ \  \ \ \  \ \  \ \  \____\ \  \_|\ \ \  \|\  \ \  \_|\ \ \  \\ \  \ \  \_\\ \ 
+   \ \_______\ \__\ \__\   \ \__\ \ \__\ \__\ \_______\ \_______\ \_______\ \_______\ \__\\ \__\ \_______\
+    \|_______|\|__|\|__|    \|__|  \|__|\|__|\|_______|\|_______|\|_______|\|_______|\|__| \|__|\|_______|
+                                                                                                         
+                              Welcome to the DataLegend playground!
+
+
+This image comes pre-installed with many of the data science tools that are being developed by the DataLegend
+team (WP4) within the CLARIAH project, and which are available ready-to-use using this interface.
+
+
+Available applications:
+
+- COW:           a tool to convert CSV to Linked Data (RDF)
+                 available as command 'cow_tool'
+                 see the wiki at https://github.com/CLARIAH/COW
+
+- Burgerlinker:  a tool to align civil registry records
+                 available as command 'burgerlinker' (no need for 'java -jar burgerlinker.jar ...')
+                 see the wiki at https://github.com/CLARIAH/burgerLinker
+
+The directory 'shared' can be used to move files between your own computer and this container. Any file stored
+there on your computer will be available within this container, and any output file moved there in this container
+will be available on your computer. Files that are saved anywhere else in this container will be gone after 
+stopping the container.
+
+
