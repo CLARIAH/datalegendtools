@@ -18,37 +18,16 @@ This image requires the Docker virtualization engine to be installed on your com
 
 Once you have Docker installed and running you can gain access to this image by pulling it from the Docker Hub, which can be achieved by issuing the following command in the terminal:
 
-`docker pull wxwilcke/datalegend`
+    $ docker pull wxwilcke/datalegend
 
-After the image has successfully been downloaded (or 'pulled') there are two ways to continue: either 1) clone the [git repository](https://github.com/wxwilcke/datalegendtools) and use our helper scripts, or 2) run all necessary commands yourself (for advanced users). 
+After the image has successfully been downloaded (or 'pulled'), create a directory called *shared*, and start the container using the following command:
 
-### Using GIT
+    $ docker run --rm -p 3000:3000 -it --mount type=bind,source=$PWD/shared,target=/home/datalegend/shared -e LOCAL_UID=$(id -u $USER) -e LOCAL_GID=$(id -g $USER) datalegend
 
-Start by installing the [Docker Compose Desktop](https://docs.docker.com/compose/install/compose-desktop), which enables us to use simple scripts that automate the starting of containers and that enables us to setup the correct environment.
+The container can be stopped by pressing CTRL-C.
 
-Next, clone the [git repository](https://github.com/wxwilcke/datalegendtools) that provides these scripts:
+The *shared* directory functions as a gateway between the local filesystem and that of the container, enabling you to move files to and fro the container. Any file stored there on your computer will be available within this container, and any output file moved there in this container will be available on your computer. Files that are saved anywhere else in this container will be gone after stopping the container.
 
-`git clone https://github.com/wxwilcke/datalegendtools`
+## Source
 
-Once clone, enter the right directory and execute Docker compose to start the container:
-
-    cd datalegendtools
-    docker-compose up
-
-The above command will start the container. You can now access the running container using your preferred browser, by going to <http://localhost:3000/wetty> and by logging in with user 'datalegend' and password 'datalegend'.
-
-Rather than running the `docker-compose` command yourself, you can also run the `run.sh` (Mac, Linux) or `run.bat` (Windows) scripts to start and stop the container.
-
-### Using Docker only
-
-To start the container without using the helper scripts, execute the following command:
-
-`docker run --rm -p 3000:3000 -v ./:/home/datalegend/shared`
-
-After a couple of seconds you access the running container using your preferred browser, by going to <http://localhost:3000/wetty> and by logging in with user 'datalegend' and password 'datalegend'.
-
-## Building the image from scratch
-
-Instead of pulling the image from Docker Hub, you can also build it yourself by going into the `build` directory of the repository, and by issuing the following command:
-
-`docker build -t datalegend .`
+The raw build files are available at our [git repository](https://github.com/wxwilcke/datalegendtools).

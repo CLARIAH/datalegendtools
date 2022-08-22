@@ -5,7 +5,7 @@ ARG VERSION_COW=1.20
 ARG VERSION_BURGERLINKER=v0.6
 
 # update repositories
-RUN apk update && apk add curl git openjdk17-jre-headless bash py3-pip && rm -rf /var/cache/apk/*
+RUN apk update && apk add curl git openjdk17-jre-headless bash py3-pip shadow && rm -rf /var/cache/apk/*
 
 # update motd
 COPY "./motd" "/etc/motd"
@@ -24,7 +24,7 @@ RUN echo "datalegend:datalegend" | chpasswd
 USER datalegend
 WORKDIR /home/datalegend
 
-RUN mkdir shared && chown datalegend:users ./shared
+RUN mkdir shared
 
 # clone COW release
 RUN mkdir ~/.cow
@@ -44,4 +44,9 @@ RUN echo "PS1='\[\e[0;32m\][\[\e[0;37m\]\u\[\e[0;32m\]] \[\e[0;33m\]\W \[\e[0;37
 RUN echo "alias burgerlinker='java -jar $HOME/.burgerlinker/burgerLinker.jar'" >> .bashrc
 
 USER root
-WORKDIR /usr/src/app
+
+RUN chown -R datalegend:users /home/datalegend/shared
+
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
