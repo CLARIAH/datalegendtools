@@ -20,13 +20,18 @@ Once you have Docker installed and running you can gain access to this image by 
 
     $ docker pull wxwilcke/datalegend
 
-After the image has successfully been downloaded (or 'pulled'), create a directory called *shared*, and start the container using the following command:
+After the image has successfully been downloaded (or 'pulled'), proceed by cloning the [git repository](https://github.com/wxwilcke/datalegendtools):
 
-    $ docker run --rm -p 3000:3000 -it --mount type=bind,source=$PWD/shared,target=/home/datalegend/shared -e LOCAL_UID=$(id -u $USER) -e LOCAL_GID=$(id -g $USER) datalegend
+    $ git clone https://github.com/wxwilcke/datalegendtools
 
-The virtualised system can now be accessed by opening <http://localhost:3000/wetty> in your preferred browser, and by logging in using username *datalegend* and password *datalegend*. The container can be stopped by pressing CTRL-C.
+Finally, enter the newly cloned repository, and start the container using the following commands:
 
-The *shared* directory functions as a gateway between the local filesystem and that of the container, enabling you to move files to and fro the container. Any file stored there on your computer will be available within this container, and any output file moved there in this container will be available on your computer. Files that are saved anywhere else in this container will be gone after stopping the container.
+    $ cd datalegendtools
+    $ docker run --rm -p 3000:3000 -it --mount type=bind,source=$PWD/shared,target=/home/datalegend/shared -e LOCAL_UID=$(id -u $USER) -e LOCAL_GID=$(id -g $USER) wxwilcke/datalegend
+
+The virtualised system can now be accessed by opening <http://localhost:3000/wetty> in your preferred browser, and by logging in using username *datalegend* and password *datalegend*. The container can be stopped by pressing CTRL-C, or by closing the terminal.
+
+In the *datalegendtools* directory is a directory called *shared* which functions as a gateway between the local filesystem and that of the container, enabling you to move files to and fro the container. Any file stored there on your computer will be available within this container, and any output file moved there in this container will be available on your computer. Files that are saved anywhere else in this container will be gone after stopping the container.
 
 ## Source
 
