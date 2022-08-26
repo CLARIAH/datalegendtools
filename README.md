@@ -20,18 +20,49 @@ Once you have Docker installed and running you can gain access to this image by 
 
     $ docker pull wxwilcke/datalegend
 
-After the image has successfully been downloaded (or 'pulled'), proceed by cloning the [git repository](https://github.com/wxwilcke/datalegendtools):
+After the image has successfully been downloaded (or 'pulled') the container can be run as follows:
+
+    $ docker run --rm -p 3000:3000 -it wxwilcke/datalegendtools
+
+The virtualised system can now be accessed by opening <http://localhost:3000/wetty> in your preferred browser, and by logging in using username **datalegend** and password **datalegend**. The container can be stopped by pressing CTRL-C, or by closing the terminal.
+
+## Sharing files between the host and the container
+
+To share files between the host system and the container, such as the various input and output data, a shared directory has to be created that will function as a gateway between the two systems. Any file moved to that directory on your computer will be available within the container, and any file moved there in the container will be available on your computer. Files that are saved anywhere else in the container will be gone after stopping the container.
+
+There are two ways to achieve this: either 1) by hand, creating the necessary directories yourself, or 2) by using [git](https://git-scm.com/downloads) to clone this repository and have everything setup right from the get go. Both methods are explained below.
+
+### Manual setup
+
+Start by creating a working directory from which the container will be run. Here, we use the name *datalegendtools* for this directory:
+
+    $ mkdir datalegendtools
+
+Next, enter this directory and create another directory within the working directory, called *shared*:
+
+    $ cd datalegendtools
+    $ mkdir shared
+
+This is the directory that will connect your system to that of the container.
+
+Finally, start the container using the following command *from within the working directory*:
+
+    $ docker run --rm -p 3000:3000 -it --mount type=bind,source=$PWD/shared,target=/home/datalegend/shared -e LOCAL_UID=$(id -u $USER) -e LOCAL_GID=$(id -g $USER) wxwilcke/datalegend
+
+You can now use the *shared* directory to transfer file to and fro the container.
+
+### Git setup
+
+Ensure that you have [git](https://git-scm.com/downloads) installed on your computer, and proceed by cloning the [git repository](https://github.com/wxwilcke/datalegendtools):
 
     $ git clone https://github.com/wxwilcke/datalegendtools
 
-Finally, enter the newly cloned repository, and start the container using the following commands:
+Next, enter the newly cloned repository, and start the container using the following commands:
 
     $ cd datalegendtools
     $ docker run --rm -p 3000:3000 -it --mount type=bind,source=$PWD/shared,target=/home/datalegend/shared -e LOCAL_UID=$(id -u $USER) -e LOCAL_GID=$(id -g $USER) wxwilcke/datalegend
 
-The virtualised system can now be accessed by opening <http://localhost:3000/wetty> in your preferred browser, and by logging in using username *datalegend* and password *datalegend*. The container can be stopped by pressing CTRL-C, or by closing the terminal.
-
-In the *datalegendtools* directory is a directory called *shared* which functions as a gateway between the local filesystem and that of the container, enabling you to move files to and fro the container. Any file stored there on your computer will be available within this container, and any output file moved there in this container will be available on your computer. Files that are saved anywhere else in this container will be gone after stopping the container.
+You can now use the *shared* directory to transfer file to and fro the container.
 
 ## Source
 
