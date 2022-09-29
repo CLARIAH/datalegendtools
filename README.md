@@ -24,7 +24,7 @@ Here, the `#`-symbol refers to the terminal of a user with administrative privil
 
 After the image has successfully been downloaded (or 'pulled') the container can be run as follows:
 
-    # docker run --rm -p 3000:3000 -it wxwilcke/datalegendtools
+    # docker run --rm -p 3000:3000 -it wxwilcke/datalegend
 
 The virtualised system can now be accessed by opening <http://localhost:3000/wetty> in your preferred browser, and by logging in using username **datalegend** and password **datalegend**. The container can be stopped by pressing CTRL-C, or by closing the terminal.
 
