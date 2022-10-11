@@ -57,7 +57,7 @@ You can now use the *shared* directory to transfer file to and fro the container
 
 ### Git setup
 
-Ensure that you have [git](https://git-scm.com/downloads) installed on your computer, and proceed by cloning the [git repository](https://github.com/wxwilcke/datalegendtools):
+Ensure that you have [git](https://git-scm.com/downloads) installed on your computer, and proceed by cloning the [git repository](https://github.com/CLARIAH/datalegendtools):
 
     $ git clone https://github.com/wxwilcke/datalegendtools
 
@@ -72,4 +72,4 @@ You can now use the *shared* directory to transfer file to and fro the container
 
 ## Source
 
-The raw build files are available at our [git repository](https://github.com/wxwilcke/datalegendtools).
+The raw build files are available at our [git repository](https://github.com/CLARIAH/datalegendtools).
