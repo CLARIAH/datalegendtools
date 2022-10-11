@@ -59,7 +59,7 @@ You can now use the *shared* directory to transfer file to and fro the container
 
 Ensure that you have [git](https://git-scm.com/downloads) installed on your computer, and proceed by cloning the [git repository](https://github.com/CLARIAH/datalegendtools):
 
-    $ git clone https://github.com/wxwilcke/datalegendtools
+    $ git clone https://github.com/CLARIAH/datalegendtools
 
 Here, the `$`-symbol refers to the terminal of a user *without* administrative privileges on your machine, and is not part of the command.
 
