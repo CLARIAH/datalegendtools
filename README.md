@@ -32,7 +32,7 @@ The virtualised system can now be accessed by opening <http://localhost:3000/wet
 
 To share files between the host system and the container, such as the various input and output data, a shared directory has to be created that will function as a gateway between the two systems. Any file moved to that directory on your computer will be available within the container, and any file moved there in the container will be available on your computer. Files that are saved anywhere else in the container will be gone after stopping the container.
 
-There are two ways to achieve this: either 1) by hand, creating the necessary directories yourself, or 2) by using [git](https://git-scm.com/downloads) to clone this repository and have everything setup right from the get go. Both methods are explained below.
+There are two ways to achieve this: either 1) by hand, creating the necessary directories yourself, or 2) by using [git](https://git-scm.com/downloads) to clone this repository and have everything setup right from the get go. Both methods are explained below and assume you are *not running* the docker instance already.
 
 ### Manual setup
 
