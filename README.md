@@ -68,7 +68,7 @@ Next, enter the newly cloned repository, and start the container using the follo
     $ cd datalegendtools
     # docker run --rm -p 3000:3000 -it --mount type=bind,source=$PWD/shared,target=/home/datalegend/shared -e LOCAL_UID=$(id -u $USER) -e LOCAL_GID=$(id -g $USER) wxwilcke/datalegend
 
-You can now use the *shared* directory to transfer file to and fro the container.
+You can now use the *shared* directory to transfer file to and from the container.
 
 ## Source
 
