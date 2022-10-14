@@ -1,4 +1,4 @@
-# DataLegend Playground
+# DataLegend Tools
 
 This Docker image comes pre-installed with many of the data science tools that are being developed by the [DataLegend team (WP4)](https://www.datalegend.net) within the [CLARIAH](https://www.clariah.nl) project, and which are available ready-to-use using this image.
 
