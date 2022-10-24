@@ -1,4 +1,4 @@
-# DataLegend Playground
+# DataLegend Tools
 
 This Docker image comes pre-installed with many of the data science tools that are being developed by the [DataLegend team (WP4)](https://www.datalegend.net) within the [CLARIAH](https://www.clariah.nl) project, and which are available ready-to-use using this image.
 
@@ -34,7 +34,7 @@ The virtualised system can now be accessed by opening <http://localhost:3000/wet
 
 To share files between the host system and the container, such as the various input and output data, a shared directory has to be created that will function as a gateway between the two systems. Any file moved to that directory on your computer will be available within the container, and any file moved there in the container will be available on your computer. Files that are saved anywhere else in the container will be gone after stopping the container.
 
-There are two ways to achieve this: either 1) by hand, creating the necessary directories yourself, or 2) by using [git](https://git-scm.com/downloads) to clone this repository and have everything setup right from the get go. Both methods are explained below.
+There are two ways to achieve this: either 1) by hand, creating the necessary directories yourself, or 2) by using [git](https://git-scm.com/downloads) to clone this repository and have everything setup right from the get go. Both methods are explained below and assume you are *not running* the docker instance already.
 
 ### Manual setup
 
@@ -59,9 +59,9 @@ You can now use the *shared* directory to transfer file to and fro the container
 
 ### Git setup
 
-Ensure that you have [git](https://git-scm.com/downloads) installed on your computer, and proceed by cloning the [git repository](https://github.com/wxwilcke/datalegendtools):
+Ensure that you have [git](https://git-scm.com/downloads) installed on your computer, and proceed by cloning the [git repository](https://github.com/CLARIAH/datalegendtools):
 
-    git clone https://github.com/wxwilcke/datalegendtools
+    git clone https://github.com/CLARIAH/datalegendtools
 
 Next, enter the newly cloned repository, and start the container using the following commands:
 
@@ -70,8 +70,8 @@ Next, enter the newly cloned repository, and start the container using the follo
 
 Note that the last command once again requires elevated privileges.
 
-You can now use the *shared* directory to transfer file to and fro the container.
+You can now use the *shared* directory to transfer file to and from the container.
 
 ## Source
 
-The raw build files are available at our [git repository](https://github.com/wxwilcke/datalegendtools).
+The raw build files are available at our [git repository](https://github.com/CLARIAH/datalegendtools).
