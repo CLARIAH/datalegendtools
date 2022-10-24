@@ -18,13 +18,15 @@ This image requires the Docker virtualisation engine to be installed on your com
 
 Once you have Docker installed and running you can gain access to this image by pulling it from the Docker Hub, which can be achieved by issuing the following command in the terminal:
 
-    # docker pull wxwilcke/datalegend
+    docker pull wxwilcke/datalegend
 
-Here, the `#`-symbol refers to the terminal of a user with administrative privileges on your machine, and is not part of the command.
+Note that this command must be run by a user with administrative privileges on your machine. For Linux and Mac systems a regular user can often obtain temporary administrative privileges by prepending `sudo` to the above command.
 
 After the image has successfully been downloaded (or 'pulled') the container can be run as follows:
 
-    # docker run --rm -p 3000:3000 -it wxwilcke/datalegend
+    docker run --rm -p 3000:3000 -it wxwilcke/datalegend
+
+This command likewise requires elevated privileges (obtained by `sudo`).
 
 The virtualised system can now be accessed by opening <http://localhost:3000/wetty> in your preferred browser, and by logging in using username **datalegend** and password **datalegend**. The container can be stopped by pressing CTRL-C, or by closing the terminal.
 
@@ -36,22 +38,22 @@ There are two ways to achieve this: either 1) by hand, creating the necessary di
 
 ### Manual setup
 
-Start by creating a working directory from which the container will be run. Here, we use the name *datalegendtools* for this directory:
+Start by creating a working directory on your system from which the container will be run. Here, we use the name *datalegendtools* for this directory:
 
-    $ mkdir datalegendtools
-
-Here, the `$`-symbol refers to the terminal of a user *without* administrative privileges on your machine, and is not part of the command.
+    mkdir datalegendtools
 
 Next, enter this directory and create another directory within the working directory, called *shared*:
 
-    $ cd datalegendtools
-    $ mkdir shared
+    cd datalegendtools
+    mkdir shared
 
 This is the directory that will connect your system to that of the container.
 
 Finally, start the container using the following command *from within the working directory*:
 
-    # docker run --rm -p 3000:3000 -it --mount type=bind,source=$PWD/shared,target=/home/datalegend/shared -e LOCAL_UID=$(id -u $USER) -e LOCAL_GID=$(id -g $USER) wxwilcke/datalegend
+    docker run --rm -p 3000:3000 -it --mount type=bind,source=$PWD/shared,target=/home/datalegend/shared -e LOCAL_UID=$(id -u $USER) -e LOCAL_GID=$(id -g $USER) wxwilcke/datalegend
+
+Note that this command once again requires elevated privileges.
 
 You can now use the *shared* directory to transfer file to and fro the container.
 
@@ -59,14 +61,14 @@ You can now use the *shared* directory to transfer file to and fro the container
 
 Ensure that you have [git](https://git-scm.com/downloads) installed on your computer, and proceed by cloning the [git repository](https://github.com/wxwilcke/datalegendtools):
 
-    $ git clone https://github.com/wxwilcke/datalegendtools
-
-Here, the `$`-symbol refers to the terminal of a user *without* administrative privileges on your machine, and is not part of the command.
+    git clone https://github.com/wxwilcke/datalegendtools
 
 Next, enter the newly cloned repository, and start the container using the following commands:
 
-    $ cd datalegendtools
-    # docker run --rm -p 3000:3000 -it --mount type=bind,source=$PWD/shared,target=/home/datalegend/shared -e LOCAL_UID=$(id -u $USER) -e LOCAL_GID=$(id -g $USER) wxwilcke/datalegend
+    cd datalegendtools
+    docker run --rm -p 3000:3000 -it --mount type=bind,source=$PWD/shared,target=/home/datalegend/shared -e LOCAL_UID=$(id -u $USER) -e LOCAL_GID=$(id -g $USER) wxwilcke/datalegend
+
+Note that the last command once again requires elevated privileges.
 
 You can now use the *shared* directory to transfer file to and fro the container.
 
