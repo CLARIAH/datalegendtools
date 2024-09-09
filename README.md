@@ -5,12 +5,16 @@ This Docker image comes pre-installed with many of the data science tools that a
 Available applications:
 
 - COW:           a tool to convert CSV to Linked Data (RDF)  
-                 available as command 'cow_tool'  
+                 available as command 'cow\_tool'  
                  see the wiki at <https://github.com/CLARIAH/COW>
 
 - Burgerlinker:  a tool to align civil registry records  
                  available as command 'burgerlinker' (no need for 'java -jar burgerlinker.jar ...')  
                  see the wiki at <https://github.com/CLARIAH/burgerLinker>
+
+- Hypodisc:      a tool to discover graph patterns on Linked Data (RDF)
+                 available as command 'hypodisc'
+                 see the wiki at <https://gitlab.com/wxwilcke/hypodisc>
 
 ## Getting started
 

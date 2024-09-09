@@ -1,8 +1,8 @@
 FROM wettyoss/wetty:latest
 MAINTAINER Xander Wilcke "w.x.wilcke@vu.nl"
 
-ARG VERSION_COW=1.20
-ARG VERSION_BURGERLINKER=v0.6
+ARG VERSION_COW=2.0.0
+ARG VERSION_BURGERLINKER=v0.7
 
 # update repositories
 RUN apk update && apk add curl git openjdk17-jre-headless bash py3-pip shadow && rm -rf /var/cache/apk/*
@@ -34,6 +34,13 @@ RUN pip3 install . && pip cache purge
 
 WORKDIR /home/datalegend
 
+# clone Hypodisc
+RUN git clone --recurse-submodules https://gitlab.com/wxwilcke/hypodisc.git
+WORKDIR /home/datalegend/.hypodisc
+RUN pip3 install . && pip cache purge
+
+WORKDIR /home/datalegend
+
 # clone Burgerlinker release
 RUN mkdir ~/.burgerlinker
 RUN curl -OL "https://github.com/CLARIAH/burgerLinker/releases/download/$VERSION_BURGERLINKER/burgerLinker.jar" --output-dir ~/.burgerlinker
@@ -42,6 +49,7 @@ RUN echo "[[ -f ~/.bashrc ]] && . ~/.bashrc" > .bash_profile
 RUN echo "export PATH=$PATH:$HOME/.local/bin" >> .bash_profile
 RUN echo "PS1='\[\e[0;32m\][\[\e[0;37m\]\u\[\e[0;32m\]] \[\e[0;33m\]\W \[\e[0;37m\]\$ '" > .bashrc
 RUN echo "alias burgerlinker='java -jar $HOME/.burgerlinker/burgerLinker.jar'" >> .bashrc
+RUN echo "alias hypodisc='cd $HOME/.hypodisc && python3 ./hypodisc/run.py ; cd -'" >> .bashrc
 
 USER root
 

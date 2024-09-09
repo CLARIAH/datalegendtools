@@ -16,12 +16,16 @@ team (WP4) within the CLARIAH project, and which are available ready-to-use usin
 Available applications:
 
 - COW:           a tool to convert CSV to Linked Data (RDF)
-                 available as command 'cow_tool'
+                 available as command 'cow_tool_cli'
                  see the wiki at https://github.com/CLARIAH/COW
 
 - Burgerlinker:  a tool to align civil registry records
                  available as command 'burgerlinker' (no need for 'java -jar burgerlinker.jar ...')
                  see the wiki at https://github.com/CLARIAH/burgerLinker
+
+- Hypodisc:      a tool to discover graph patterns on Linked Data (RDF)
+                 available as command 'hypodisc'
+                 see the wiki at https://gitlab.com/wxwilcke/hypodisc
 
 The directory 'shared' can be used to move files between your own computer and this container. Any file stored
 there on your computer will be available within this container, and any output file moved there in this container
